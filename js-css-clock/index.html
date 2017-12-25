@@ -69,6 +69,11 @@
       transition: all 0.05s;
       transition-timing-function: cubic-bezier(0.42, 0, 1, 2.82);
     }
+
+    .second-hand {
+      height:1px;
+      /* width: 100%; */
+    }
   </style>
 
   <script>
@@ -82,7 +87,7 @@
       const seconds = now.getSeconds();
       const hours = now.getHours();
       const minutes = now.getMinutes();
-      console.log(hours);
+
       const secondsDegrees = ((seconds / 60) * 360) + 90;
       const hoursDegrees = ((hours / 24) * 360);
       const minutesDegrees = ((minutes / 60) * 360) + 90;
