@@ -51,9 +51,9 @@
     }
 
     .clock-face {
-      position: relative;
-      width: 100%;
-      height: 100%;
+      position: absolute;
+      width: 50%;
+      height: 50%;
       transform: translateY(-3px);
       /* account for the height of the clock hands */
     }
@@ -70,10 +70,6 @@
       transition-timing-function: cubic-bezier(0.42, 0, 1, 2.82);
     }
 
-    .second-hand {
-      height:1px;
-      /* width: 100%; */
-    }
   </style>
 
   <script>
@@ -93,6 +89,9 @@
       const minutesDegrees = ((minutes / 60) * 360) + 90;
 
       console.log('now', now);
+      if (secondsDegrees === 0) {
+        secondHand.style.removeProperty('transition');
+      }
       secondHand.style.transform = `rotate(${secondsDegrees}deg)`;
       minuteHand.style.transform = `rotate(${minutesDegrees}deg)`;
       hourHand.style.transform = `rotate(${hoursDegrees}deg)`;
