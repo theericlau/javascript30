@@ -34,25 +34,28 @@
 
     // Array.prototype.filter()
     // 1. Filter the list of inventors for those who were born in the 1500's
-    const fifteen = (array) => {
-      return array.filter((current) => {
-        if (current.year < 1600 && current.year >= 1500) {
-          return current; //or something truthy usually pass in return true
-        }
-        // console.log('current', current);
-        // console.log('index', index);
-      })
-    }
+    // const fifteen = (array) => {
+    //   return array.filter((current) => {
+    //     if (current.year < 1600 && current.year >= 1500) {
+    //       return current; //or something truthy usually pass in return true
+    //     }
+    //     // console.log('current', current);
+    //     // console.log('index', index);
+    //   })
+    // }
+    const fifteen = array => array.filter( current => current.year < 1600 && current.year >= 1500)
 
-    console.table(fifteen(inventors));
+    // console.table(fifteen(inventors));
 
     // Array.prototype.map()
     // 2. Give us an array of the inventors' first and last names
-    const firstLast = (array) => {
-      return array.map(el =>
-      [el.first, el.last]
-    )
-    }
+    // const firstLast = (array) => {
+    //   return array.map(el =>
+    //   `${el.first}, ${el.last}`
+    // )
+    // }
+
+    const firstLast = array => array.map(el => `${el.first}, ${el.last}`);
     // console.log(firstLast(inventors));
 
     // Array.prototype.sort()
@@ -60,16 +63,19 @@
     const birthday = (array) => {
       // debugger;
       return array.sort((a, b) => {
-        // if (a.year > b.year) {
-        //   return -1;
-        // } else {
-        //   return 1;
-        // }
-        return a.year - b.year;
+        // console.log('a', a.year, 'b', b.year);
+        if (a.year < b.year) {
+          return 1;
+        } else {
+          return -1;
+        }
+        // return a.year - b.year;
       })
     }
 
-    console.log(birthday(inventors));
+    // const birthday = array => array.sort((a,b) => a.year - b.year);
+
+    console.log('birth', birthday(inventors));
 
     // Array.prototype.reduce()
     // 4. How many years did all the inventors live?
@@ -121,8 +127,6 @@
 
     const sum = (array) => {
       return array.reduce((acc, curr) => {
-        console.log('acc', acc);
-        console.log('curr', curr);
         acc.hasOwnProperty(curr) ? acc[curr] += 1 : acc[curr] = 1;
         return acc;
       }, {});
