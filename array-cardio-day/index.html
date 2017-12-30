@@ -105,12 +105,30 @@
 
     // 7. sort Exercise
     // Sort the people alphabetically by last name
+    const peopleSort = (array) => {
+      return array.sort((curr, next) => {
+        let currentName = curr.split(', ');
+        let nextName = next.split(', ');
+        // console.log('currentName', currentName[0], 'nextName', nextName[0], currentName[0] > nextName[0]);
+        return currentName[0] > nextName[0]? 1 : -1;
+      })
+    }
 
+    console.log(peopleSort(people));
 
     // 8. Reduce Exercise
     // Sum up the instances of each of these
-    const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck'];
 
+    const sum = (array) => {
+      return array.reduce((acc, curr) => {
+        console.log('acc', acc);
+        console.log('curr', curr);
+        acc.hasOwnProperty(curr) ? acc[curr] += 1 : acc[curr] = 1;
+        return acc;
+      }, {});
+    }
+    const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck'];
+    console.log(sum(data));
   </script>
 </body>
 
