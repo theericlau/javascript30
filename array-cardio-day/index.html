@@ -93,10 +93,19 @@
 
     // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
     // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
-
+    let boulevards = ['appe de hi, boulevard de', 'applede', 'apple asdf']
+    const boulevardsWithDe = (array) => {
+      return array.filter(current => {
+        if (current.includes(' de ')) {
+          return current;
+        }
+      })
+    }
+    console.log(boulevardsWithDe(boulevards))
 
     // 7. sort Exercise
     // Sort the people alphabetically by last name
+
 
     // 8. Reduce Exercise
     // Sum up the instances of each of these
