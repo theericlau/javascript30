@@ -37,14 +37,14 @@
     const fifteen = (array) => {
       return array.filter((current) => {
         if (current.year < 1600 && current.year >= 1500) {
-          return current;
+          return current; //or something truthy usually pass in return true
         }
         // console.log('current', current);
         // console.log('index', index);
       })
     }
 
-    // console.log(fifteen(inventors));
+    console.table(fifteen(inventors));
 
     // Array.prototype.map()
     // 2. Give us an array of the inventors' first and last names
