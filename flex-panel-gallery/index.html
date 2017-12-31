@@ -148,14 +148,22 @@
   </div>
 
   <script>
-    let panels = document.querySelectorAll('.panel');
+    let panels = [...document.querySelectorAll('.panel')];
 
     function toggleOpen(element){
+      console.log(panels[0].classList.value.includes('open'));
+      if (!this.classList.value.includes('open')) {
+        for (let i = 0; i < panels.length; i++) {
+          if (panels[i].classList.value.includes('open')) {
+            panels[i].classList.toggle('open');
+          }
+        }
+      }
       this.classList.toggle('open');
     }
 
     function toggleActive(event){
-      console.log(event);
+      // console.log(event);
       if (event.propertyName === 'flex-grow'){
         this.classList.toggle('open-active');
       }
