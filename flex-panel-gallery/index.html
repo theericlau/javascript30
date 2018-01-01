@@ -151,10 +151,10 @@
     let panels = [...document.querySelectorAll('.panel')];
 
     function toggleOpen(element){
-      console.log(panels[0].classList.value.includes('open'));
-      if (!this.classList.value.includes('open')) {
+      console.log(panels[0].classList.contains('open'));
+      if (!this.classList.contains('open')) {
         for (let i = 0; i < panels.length; i++) {
-          if (panels[i].classList.value.includes('open')) {
+          if (panels[i].classList.contains('open')) {
             panels[i].classList.toggle('open');
           }
         }
