@@ -29,22 +29,36 @@
       //spread operator to push each individual one to cities array
       cities.push(...result)
     })
+
     const findMatches = wordsToMatch => {
 
       return cities.filter( obj => {
         //g for global and i for case insensitive
         const regex = new RegExp(wordsToMatch, 'gi');
 
-        return obj.city.match(regex)
+        return obj.city.match(regex) || obj.state.match(regex);
       })
     }
 
     const displayMatch = function() {
-      console.log(this.value);
+      const matches = findMatches(this.value);
+      const html = matches.map(match => {
+        const regex = new RegExp(this.value, 'gi');
+        const cityName = match.city.replace(regex, `<span class="hl">${this.value}</span>`);
+        console.log(cityName);
+        const stateName = match.state.replace(regex, `<span class="hl">${this.value}</span>`);
+        return `
+          <li>
+            <span class="name">${cityName}, ${stateName}</span>
+            <span class="population">${match.population}</span>
+          </li>`
+      }).join('');
+
+      suggestions.innerHTML = html;
     }
 
     const searchedItem = document.querySelector('.search');
-
+    const suggestions = document.querySelector('.suggestions');
     searchedItem.addEventListener('change', displayMatch);
     searchedItem.addEventListener('keyup', displayMatch);
 
