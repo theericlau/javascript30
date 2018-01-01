@@ -23,7 +23,10 @@
     //fetch is a promise
     fetch(endpoint)
     .then(data => {
-      console.log(data);
+      data.json();
+    })
+    .then(result => {
+      console.log(result);
     })
 
   </script>
