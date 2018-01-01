@@ -23,10 +23,11 @@
     //fetch is a promise
     fetch(endpoint)
     .then(data => {
-      data.json();
+      return data.json();
     })
     .then(result => {
-      console.log(result);
+      //spread operator to push each individual one to cities array
+      cities.push(...result)
     })
 
   </script>
