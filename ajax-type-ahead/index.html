@@ -29,6 +29,24 @@
       //spread operator to push each individual one to cities array
       cities.push(...result)
     })
+    const findMatches = wordsToMatch => {
+
+      return cities.filter( obj => {
+        //g for global and i for case insensitive
+        const regex = new RegExp(wordsToMatch, 'gi');
+
+        return obj.city.match(regex)
+      })
+    }
+
+    const displayMatch = function() {
+      console.log(this.value);
+    }
+
+    const searchedItem = document.querySelector('.search');
+
+    searchedItem.addEventListener('change', displayMatch);
+    searchedItem.addEventListener('keyup', displayMatch);
 
   </script>
 </body>
