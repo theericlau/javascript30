@@ -18,6 +18,8 @@
     context.lineJoin = 'round';
     context.lineCap = 'round';
     context.lineWidth = 50;
+    //controls the blend
+    context.globalCompositeOperation = 'multiply';
 
     let isDrawing = false;
     [lastX, lastY, hue, direction] = [0, 0, 0, true];
@@ -28,13 +30,29 @@
         return;
       }
       context.strokeStyle = `hsl(${hue}, 100%, 50%)`;
-      ctx
       context.beginPath();
+
+      //start from
       context.moveTo(lastX, lastY);
+
+      //end at
       context.lineTo(e.offsetX, e.offsetY);
+
+      //start stroke
       context.stroke();
+      //end where we left off
       [lastX, lastY] = [e.offsetX, e.offsetY];
       hue++;
+
+      if (context.lineWidth >= 100 || context.lineWidth <= 1) {
+        direction = !direction;
+      }
+
+      if (direction) {
+        context.lineWidth++;
+      } else {
+        context.lineWidth--;
+      }
 
     }
 
