@@ -9,6 +9,29 @@
 <body>
   <canvas id="draw" width="800" height="800"></canvas>
   <script>
+    const canvas = document.querySelector('#draw');
+    const context = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    context.strokeStyle = '#BADA55';
+    context.lineJoin = 'round';
+    context.lineCap = 'round';
+
+    let isDrawing = false;
+    [lastX, lastY] = [0, 0];
+
+    const draw = e => {
+      if (!isDrawing){
+        return;
+      }
+
+    }
+
+    canvas.addEventListener('mousedown', () => isDrawing = true);
+    canvas.addEventListener('mousemove', draw);
+    canvas.addEventListener('mouseup', () => isDrawing = false);
+    canvas.addEventListener('mouseout', () => isDrawing = false);
   </script>
 
   <style>
