@@ -62,12 +62,20 @@
     // console.log(e.keyCode);
     const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
     const key = document.querySelector(`.key[data-key="${e.keyCode}"]`);
-    console.log(audio);
+    // console.log(audio);
     if (!audio) return; //stop the function from running if the key doesn't exist
     audio.currentTime = 0; //rewind to the start;
     audio.play();
     key.classList.add('playing');
   })
+  function removeTransition(e) {
+    if (e.propertyName !== 'transform') return; //skip it if its not a transform
+    console.log(e.propertyName);
+  }
+
+  const keys = document.querySelectorAll('.key'); //selects all of the keys
+  //cant use keys.addEventListener('transitioneend') because can't work on array of nodes
+  keys.forEach(key => key.addEventListener('transitionend', removeTransition));
 </script>
 
 
